@@ -1,6 +1,5 @@
 package com.itacademy.nivel1;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,6 +15,12 @@ public class Main {
         List<Product> products =  Arrays.asList(product1, product2, product3, product4);
 
         Sale sale = new Sale(products);
+
+        try {
+            products.get(5);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        }
 
         try {
             System.out.println("\nThe price of the products is: " + sale.calculateTotal());
