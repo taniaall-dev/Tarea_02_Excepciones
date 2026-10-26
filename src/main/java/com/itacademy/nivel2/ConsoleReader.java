@@ -99,6 +99,39 @@ public final class ConsoleReader {
         }
     }
 
-        return numDouble;
+    public static String readString(String message) {
+        while (true) {
+            System.out.println(message);
+            String input = scanner.nextLine();
+
+            try {
+                if (input.isBlank()) {
+                    throw new InvalidInputException("The entrance cannot be empty.");
+                }
+
+                return input;
+
+            } catch (InvalidInputException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public static boolean readYesNo(String message) {
+        while (true) {
+            System.out.println(message);
+            String input = scanner.nextLine();
+
+            try {
+                if (!input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n")) {
+                    throw new InvalidInputException("Invalid entry, please enter'y' o 'n'.");
+                }
+
+                return input.equalsIgnoreCase("Y");
+
+            } catch (InvalidInputException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
