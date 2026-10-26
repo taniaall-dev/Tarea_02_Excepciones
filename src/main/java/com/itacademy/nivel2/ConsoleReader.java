@@ -12,68 +12,58 @@ public final class ConsoleReader {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static byte readByte(String message) {
-        byte numByte;
-
         while (true) {
+            System.out.println(message);
+
             try {
-                System.out.println(message);
-                numByte = scanner.nextByte();
+                byte value = scanner.nextByte();
                 scanner.nextLine();
-                break;
+                return value;
             } catch (InputMismatchException e) {
                 scanner.nextLine();
                 System.out.println("Format error. Try again.");
             }
         }
-
-        return numByte;
     }
 
     public static int readInt(String message) {
-        int numInt;
-
         while (true) {
+            System.out.println(message);
+
             try {
-                System.out.println(message);
-                numInt = scanner.nextInt();
+                int value = scanner.nextInt();
                 scanner.nextLine();
-                break;
+                return value;
             } catch (InputMismatchException e) {
                 scanner.nextLine();
                 System.out.println("Format error. Try again.");
             }
         }
-
-        return numInt;
     }
 
     public static float readFloat(String message) {
-        float numFloat;
-
         while (true) {
+            System.out.println(message);
+
             try {
-                System.out.println(message);
-                numFloat = scanner.nextFloat();
+                float value = scanner.nextFloat();
                 scanner.nextLine();
-                break;
+                return value;
             } catch (InputMismatchException e) {
                 scanner.nextLine();
                 System.out.println("Format error. Try again.");
             }
         }
-
-        return numFloat;
     }
 
     public static double readDouble(String message) {
-        double numDouble;
-
         while (true) {
+            System.out.println(message);
+
             try {
-                System.out.println(message);
-                numDouble = scanner.nextDouble();
+                double value = scanner.nextDouble();
                 scanner.nextLine();
-                break;
+                return value;
             } catch (InputMismatchException e) {
                 scanner.nextLine();
                 System.out.println("Format error. Try again.");
@@ -124,7 +114,7 @@ public final class ConsoleReader {
 
             try {
                 if (!input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n")) {
-                    throw new InvalidInputException("Invalid entry, please enter'y' o 'n'.");
+                    throw new InvalidInputException("Invalid entry, please enter'y' or 'n'.");
                 }
 
                 return input.equalsIgnoreCase("Y");
