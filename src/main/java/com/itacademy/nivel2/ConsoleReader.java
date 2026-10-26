@@ -79,6 +79,25 @@ public final class ConsoleReader {
                 System.out.println("Format error. Try again.");
             }
         }
+    }
+
+    public static char readChar(String message) {
+        while (true) {
+            System.out.println(message);
+            String input = scanner.nextLine();
+
+            try {
+                if (input.length() != 1) {
+                    throw new InvalidInputException("You must enter a single character.");
+                }
+
+                return input.charAt(0);
+
+            } catch (InvalidInputException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 
         return numDouble;
     }
