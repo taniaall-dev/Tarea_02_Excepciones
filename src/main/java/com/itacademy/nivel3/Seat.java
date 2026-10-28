@@ -31,4 +31,9 @@ public class Seat {
                 ", Seat " + seat +
                 ", Reserved by " + personName;
     }
+
+    public String getPersonName() {
+        return personName;
+    }
+
 }
