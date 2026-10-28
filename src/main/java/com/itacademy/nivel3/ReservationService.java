@@ -50,8 +50,22 @@ public class ReservationService {
             }
         }
     }
-    // TODO List<Seat> getAllSeats()
-    // TODO List<Seat> getSeatsByPerson(String name)
+
+    public List<Seat> getAllSeats() {
+        List<Seat> seatReservations = List.copyOf(seats);
+        return seatReservations;
+    }
+
+    public List<Seat> getSeatsByPerson(String name) {
+        validateName(name);
+        List<Seat> seatByPersonReservation = new ArrayList<>();
+        for (Seat seat : seats) {
+            if (seat.getPersonName().equals(name)) {
+                seatByPersonReservation.add(seat);
+            }
+        }
+        return seatByPersonReservation;
+    }
 
     private void validateSeatPosition(int row, int seat) {
         if (row < 1 || row > totalRows) {
