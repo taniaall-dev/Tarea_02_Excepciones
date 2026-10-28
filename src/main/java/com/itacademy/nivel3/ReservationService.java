@@ -9,11 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationService {
-    private int totalRows;
-    private int seatsPerRow;
+    private final int  totalRows;
+    private final int seatsPerRow;
     private List<Seat> seats = new ArrayList<>();
 
     public ReservationService(int totalRows, int seatsPerRow) {
+        validateDimensions(totalRows, seatsPerRow);
+
         this.totalRows = totalRows;
         this.seatsPerRow = seatsPerRow;
 
@@ -41,6 +43,7 @@ public class ReservationService {
 
     public void cancelAllByPersona(String name) {
         validateName(name);
+
         for (int i = 0; i < seats.size(); ) {
             Seat reservationActually = seats.get(i);
             if (reservationActually.getPersonName().equals(name)) {
@@ -52,12 +55,12 @@ public class ReservationService {
     }
 
     public List<Seat> getAllSeats() {
-        List<Seat> seatReservations = List.copyOf(seats);
-        return seatReservations;
+        return List.copyOf(seats);
     }
 
     public List<Seat> getSeatsByPerson(String name) {
         validateName(name);
+
         List<Seat> seatByPersonReservation = new ArrayList<>();
         for (Seat seat : seats) {
             if (seat.getPersonName().equals(name)) {
@@ -87,4 +90,10 @@ public class ReservationService {
             }
         }
     }
+    private void validateDimensions(int totalRows, int seatsPerRow) {
+        if (totalRows < 1 || seatsPerRow < 1) {
+            throw new IllegalArgumentException("Error: Positive numbers are required");
+        }
+    }
+
 }
