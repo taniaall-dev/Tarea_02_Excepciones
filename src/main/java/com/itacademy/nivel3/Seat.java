@@ -13,10 +13,15 @@ public class Seat {
         this.personName = personName;
     }
 
+    public String getPersonName() {
+        return personName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Seat seat1 = (Seat) o;
+
         return row == seat1.row && seat == seat1.seat;
     }
 
@@ -31,9 +36,4 @@ public class Seat {
                 ", Seat " + seat +
                 ", Reserved by " + personName;
     }
-
-    public String getPersonName() {
-        return personName;
-    }
-
 }
