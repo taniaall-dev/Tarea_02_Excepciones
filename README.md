@@ -1,4 +1,4 @@
-# Java — Tarea 02: Gestión de excepciones
+# Java — Tarea 02: Excepciones
 
 Proyecto de Java de **IT Academy**, centrado en el tratamiento de errores y excepciones, la validación de datos y la organización del código en clases con responsabilidades diferenciadas.
 
