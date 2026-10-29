@@ -43,7 +43,7 @@ Se encarga de mostrar el menú, leer las opciones y solicitar los datos necesari
 
 **`ReservationService`**
 
-Contiene la lógica de gestión de las reservas y almacena los asientos reservados en una lista. Se encarga de validar las posiciones y los nombres, controlar las reservas duplicadas y gestionar las cancelaciones y consultas.
+Contiene la lógica de gestión de las reservas y almacena los asientos reservados en una lista. Se encarga de validar las posiciones y los nombres, controlar las reservas duplicadas y gestionar las cancelaciones y consultas. Utiliza Streams para filtrar las reservas por persona y `removeIf()` para cancelar todas las reservas asociadas a un nombre.
 
 **`Seat`**
 
@@ -77,6 +77,7 @@ La clase `ReservationService` utiliza una lista de tipo `List<Seat>` cuya implem
 
 Además, el método `getAllSeats()` devuelve una copia no modificable de la lista mediante `List.copyOf()`, evitando que quien recibe el resultado pueda modificar directamente la colección interna del servicio a través de esa lista.
 
+Para consultar las reservas de una persona, el método `getSeatsByPerson()` utiliza Streams con `filter()` para seleccionar las reservas cuyo nombre coincide con el indicado, y `toList()` para obtener una lista con los resultados. Por su parte, `removeIf()` permite eliminar directamente todas las reservas que cumplen una condición y devuelve un valor booleano que indica si se ha eliminado algún elemento.
 ## Pruebas realizadas en el Main
 
 ### Pasos de la prueba
