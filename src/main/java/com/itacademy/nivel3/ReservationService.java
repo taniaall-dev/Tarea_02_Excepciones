@@ -52,14 +52,9 @@ public class ReservationService {
 
     public List<Seat> getSeatsByPerson(String name) {
         validateName(name);
-
-        List<Seat> seatByPersonReservation = new ArrayList<>();
-        for (Seat seat : seats) {
-            if (seat.getPersonName().equals(name)) {
-                seatByPersonReservation.add(seat);
-            }
-        }
-        return seatByPersonReservation;
+        return seats.stream()
+                .filter(seat -> seat.getPersonName().equals(name))
+                .toList();
     }
 
     private void validateSeatPosition(int row, int seat) {
@@ -72,7 +67,7 @@ public class ReservationService {
     }
 
     private void validateName(String name) {
-        if (name.isBlank()) {
+        if (name == null || name.isBlank()) {
             throw new InvalidPersonNameException("Error: Name cannot be empty");
         }
         for (int i = 0; i < name.length(); i++) {
