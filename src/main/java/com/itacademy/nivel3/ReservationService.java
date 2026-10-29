@@ -41,17 +41,9 @@ public class ReservationService {
         seats.remove(new Seat(row, seat, ""));
     }
 
-    public void cancelAllByPersona(String name) {
+    public boolean cancelAllByPerson(String name) {
         validateName(name);
-
-        for (int i = 0; i < seats.size(); ) {
-            Seat reservationActually = seats.get(i);
-            if (reservationActually.getPersonName().equals(name)) {
-                seats.remove(i);
-            } else {
-                i++;
-            }
-        }
+        return seats.removeIf(seat -> seat.getPersonName().equals(name));
     }
 
     public List<Seat> getAllSeats() {
