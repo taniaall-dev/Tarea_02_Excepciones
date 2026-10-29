@@ -66,14 +66,13 @@ public class ConsoleUI {
                 }
                 case 5 -> {
                     String name = ConsoleReader.readString("Enter the name of the person:");
-                    try {
-                        List<Seat> seats = reservationService.getSeatsByPerson(name);
 
-                        if (seats.isEmpty()) {
-                            System.out.println("This person has no reservations");
-                        } else {
-                            reservationService.cancelAllByPersona(name);
+                    try {
+                        boolean removed = reservationService.cancelAllByPerson(name);
+                        if (removed) {
                             System.out.println("Reservations cancelled");
+                        } else {
+                            System.out.println("This person has no reservations");
                         }
                     } catch (InvalidPersonNameException e) {
                         System.out.println(e.getMessage());
