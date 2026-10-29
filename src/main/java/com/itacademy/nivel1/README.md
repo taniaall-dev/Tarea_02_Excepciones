@@ -58,6 +58,4 @@ Después de las pruebas, se muestra el mensaje End of test. Esto permite comprob
 
 ### Conclusión  
 
-Con este ejercicio he aprendido a utilizar excepciones para controlar errores y a entender cómo afectan al funcionamiento de un programa. Las pruebas me han permitido comprobar las diferencias entre las excepciones verificadas (checked) y las no verificadas (unchecked), especialmente qué cambia al utilizar una u otra y cómo influye en la necesidad de declararlas o capturarlas.
-
-También he podido ver que las excepciones no solo sirven para mostrar mensajes de error, sino que permiten gestionar situaciones inesperadas y controlar cómo continúa la ejecución del programa, en este caso impriendo un mensaje personalizado por consola.
+Con este ejercicio he aprendido a utilizar excepciones para controlar errores y a entender cómo afectan al funcionamiento de un programa. Las pruebas me han permitido comprobar las diferencias entre las excepciones verificadas (*checked*) y las no verificadas (*unchecked*). Las excepciones *checked* deben capturarse con `try-catch` o declararse con `throws`; si no se hace, IntelliJ IDEA señala el error y el programa no compila, por lo que no se puede ejecutar. En cambio, las excepciones *unchecked* no requieren esta gestión obligatoria y permiten ejecutar el programa sin necesidad de capturarlas o declararlas, aunque pueden producir errores durante la ejecución.
